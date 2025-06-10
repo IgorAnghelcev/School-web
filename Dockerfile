@@ -1,8 +1,7 @@
 FROM nginx:stable-alpine
 
-# Удаляем дефолтный конфиг и копируем свой
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Заменяем главный конфиг
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Копируем всю папку с вашими *.html, *.css, *.js
 COPY . /usr/share/nginx/html/
