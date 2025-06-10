@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1>Личный кабинет</h1>
+</header>
+<main class="dashboard">
+    <h2>Здравствуйте, пользователь!</h2>
+    <p>Здесь вы можете загрузить своё фото:</p>
+    <form class="upload-form" action="../../upload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="photo" accept="image/*" required>
+        <button type="submit">Загрузить фото</button>
+    </form>
+
+    <h3>Ваши загруженные фото:</h3>
+    <div class="uploaded-photos">
+        <?php
+      $files = glob("uploads/*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+      foreach ($files as $file) {
+        echo "<img src='$file' class='user-photo'>";
+        }
+        ?>
+    </div>
+    <br>
+    <a href="index.html">Выйти</a>
+</main>
+<script src="../js/config/config.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Новости - Лицей им. С. Барановского</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1>Новости лицея</h1>
+</header>
+<nav class="navbar">
+    <ul class="menu">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О лицее</a></li>
+        <li>
+            <a href="education.html">Учебный процесс</a>
+            <ul class="submenu">
+                <li><a href="news.html" class="active">Новости</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="teachers.html">Учителям</a>
+            <ul class="submenu">
+                <li><a href="documents.html">Нормативные документы</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="students.html">Ученикам</a>
+        </li>
+        <li><a href="parents.html">Родителям</a></li>        <li><a href="gallery.html">Галерея</a></li>
+
+        <li><a href="contacts.html">Контакты</a></li>
+    </ul>
+
+</nav>
+<main>
+
+    <div class="welcome-section">
+        <h2>Последние новости</h2>
+        <p>Здесь находятся последние новости лицея.</p>
+    </div>
+
+    <section id="feed" data-feed-type="NEWS"></section>
+    <!-- Модалка для увеличенного просмотра картинок -->
+    <div id="image-modal" class="image-modal hidden">
+        <span class="image-modal__close">&times;</span>
+        <img class="image-modal__content" src="" alt="Увеличенная фотография" />
+    </div>
+
+</main>
+<footer>
+    <p>&copy; 2025 Лицей им. С. Барановского</p>
+</footer><script src="../js/config/config.js"></script>
+
+<script src="../js/user.js"></script>
+
+</body>
+</html>

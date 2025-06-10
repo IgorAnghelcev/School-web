@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1>Галерея Лицея</h1>
+</header>
+
+<nav class="navbar">
+    <ul class="menu">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О лицее</a></li>
+        <li>
+            <a href="education.html">Учебный процесс</a>
+            <ul class="submenu">
+                <li><a href="news.html">Новости</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="teachers.html">Учителям</a>
+            <ul class="submenu">
+                <li><a href="documents.html">Нормативные документы</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="students.html">Ученикам</a>
+        </li>
+        <li><a href="parents.html">Родителям</a></li>
+        <li><a href="gallery.html" class="active">Галерея</a></li>
+
+        <li><a href="contacts.html">Контакты</a></li>
+    </ul>
+
+</nav>
+<main>
+    <div class="gallery"></div>
+    <div id="loading">Загрузка...</div>
+
+    <!-- Модалка для увеличенного просмотра картинок -->
+    <div id="image-modal" class="image-modal hidden">
+        <span class="image-modal__close">&times;</span>
+        <img class="image-modal__content" src="" alt="Увеличенная фотография" />
+    </div>
+
+</main>
+<script src="../js/config/config.js"></script>
+<script src="../js/gallery.js"></script>
+
+</body>
+</html>

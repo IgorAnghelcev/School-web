@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админка слайдера: Редактирование</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/admin.css" rel="stylesheet"/>
+</head>
+<body>
+<header><h1>Админка: Управление сайтом</h1></header>
+
+<nav class="navbar">
+
+    <ul class="menu-bar" id="auth-menu"></ul>
+</nav>
+
+
+<main class="admin-main">
+    <form id="create-post-form" class="post-form">
+        <h2>Создать новый пост</h2>
+
+        <label for="post-title">Заголовок *</label>
+        <input type="text" id="post-title" name="title" required/>
+
+        <label for="post-content">Текст *</label>
+        <textarea id="post-content" name="content" rows="6" required></textarea>
+
+        <label for="post-type">Тип</label>
+        <select id="post-type" name="type">
+            <option value="NEWS">Новости</option>
+            <option value="ABOUT">О лицее</option>
+            <option value="LEARNING_PROCESS">Учебный процесс</option>
+            <option value="TEACHERS">Учителям</option>
+            <option value="TEACHERS_DOCUMENTS">Нормативные документы</option>
+            <option value="STUDENTS">Ученикам</option>
+            <option value="PARENTS">Родителям</option>
+        </select>
+
+        <label>Файлы (макс 10):</label>
+        <div id="files-container">
+            <input type="file" name="files"/>
+        </div>
+        <button type="button" id="add-photo-btn">Добавить файл</button>
+
+        <button type="submit">Отправить</button>
+        <div id="post-message" class="post-message"></div>
+    </form>
+
+
+    <section id="classes-list">
+        <h2>Список классов</h2>
+
+        <div class="add-class">
+            <input type="number" id="new-grade" min="1" max="12" placeholder="Класс (1–12)" />
+            <input type="text"   id="new-section" placeholder="Секция (например, A)" />
+            <button id="add-class-btn">Добавить класс</button>
+        </div>
+
+        <ul class="class-list"></ul>
+    </section>
+
+    <div id="schedule-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Расписание класса</h3>
+            <div id="schedule-details"></div>
+        </div>
+    </div>
+
+</main>
+<script src="../js/config/config.js"></script>
+<script src="../js/user.js"></script>
+
+<script src="../js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+/* контейнер ленты */
+#feed {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 2em 2em;
+}
+
+/* один пост */
+.post {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* шапка поста — автор и дата */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 0.9em;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+.post-author {
+    font-weight: bold;
+}
+
+.post-date {
+    font-style: italic;
+}
+
+/* заголовок */
+.post-title {
+    padding: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* текст */
+.post-content {
+    padding: 0 10px 10px;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* сетка фотографий */
+.post-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 5px;
+    padding: 10px;
+}
+
+.post-photos img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Карточка класса */
+.class-schedule {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    background-color: #fafafa;
+}
+.class-schedule h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    color: #333;
+}
+.class-schedule h4 {
+    margin: 12px 0 4px;
+    font-size: 1rem;
+    color: #555;
+}
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+}
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.schedule-table th {
+    background-color: #f0f0f0;
+}
+#classes-schedule {
+    margin-top: 32px;
+}
+#classes-schedule h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: #222;
+}
+
+
+
+
+
+/* Контейнер для всех файлов в посте */
+.post-files {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+/* Общий класс для каждой «ячейки» файла */
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Для изображений: чтобы картинка была адаптивной */
+.file-item--image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Для ссылок на PDF */
+.file-item--pdf a {
+    color: #d2691e; /* можно подкорректировать */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Для документов Office/ZIP */
+.file-item--doc a {
+    color: #2e6da4; /* цвет ссылки для документа */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Для прочих файлов */
+.file-item--other a {
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Добавим небольшой hover-эффект для всех ссылок */
+.file-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* Скрытый класс, если ещё не определён */
+.hidden {
+    display: none !important;
+}
+
+/* Фон оверлея — полупрозрачный чёрный, располагается поверх всего экрана */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;       /* Достаточно большой, чтобы перекрыть всё */
+}
+
+/* Содержимое — собственно увеличенное изображение */
+.image-modal__content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Кнопка закрытия (крестик) */
+.image-modal__close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+.image-modal__close:hover {
+    color: #ddd;
+}
+
+.hidden {
+    display: none !important;
+}
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Родителям</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1>Лицей им. С. Барановского</h1>
+    <p>"Знание – сила. Мудрость – путь."</p>
+</header>
+<nav>
+    <a href="index.html">Главная</a>
+    <a href="about.html">О лицее</a>
+    <a href="education.html">Учебный процесс</a>
+    <a href="teachers.html">Учителям</a>
+    <a href="students.html">Ученикам</a>
+    <a href="parents.html" class="active">Родителям</a>
+    <a href="gallery.html">Галерея</a>
+
+    <a href="contacts.html">Контакты</a>
+
+</nav>
+<main>
+
+    <div class="welcome-section">
+        <h2>Раздел для родителей</h2>
+        <p>Контакты классных руководителей, советы и новости.</p>
+    </div>
+    <section id="feed" data-feed-type="PARENTS"></section>
+    <!-- Модалка для увеличенного просмотра картинок -->
+    <div id="image-modal" class="image-modal hidden">
+        <span class="image-modal__close">&times;</span>
+        <img class="image-modal__content" src="" alt="Увеличенная фотография" />
+    </div>
+
+</main>
+<footer>
+    <p>&copy; 2025 Лицей им. С. Барановского</p>
+</footer><script src="../js/config/config.js"></script>
+
+<script src="../js/user.js"></script>
+</body>
+</html>
