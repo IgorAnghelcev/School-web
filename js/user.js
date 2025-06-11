@@ -573,11 +573,14 @@ async function generateJwt(userId) {
 document.addEventListener('DOMContentLoaded', () => {
 
     const item = localStorage.getItem('user');
-    if (!item) return console.warn('Нет user в localStorage');
-    const user = JSON.parse(item);
-    generateJwt(user.id).then(ok => {
-        if (ok) console.log('JWT установлен в куку');
-    });
+    if (!item) {
+        console.warn('Нет user в localStorage');
+    } else {
+        const user = JSON.parse(item);
+        generateJwt(user.id).then(ok => {
+            if (ok) console.log('JWT установлен в куку');
+        });
+    }
 
 
     console.log('loaded');
