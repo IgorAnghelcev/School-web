@@ -50,14 +50,13 @@ jobs:
             echo "Pull latest image"
             docker pull $IMAGE
 
-            # --- Добавляем очистку любого контейнера, слушающего порт 80 ---
-            echo "Free up port 80 if it's in use by another container"
-            OLD=$(docker ps -q --filter "publish=80")
-            if [ -n "$OLD" ]; then
-              echo "Stopping other containers on port 80: $OLD"
-              docker stop $OLD
-              docker rm   $OLD
-            fi
+            # Удаляем любой контейнер, слушающий 80 порт
+            echo "Free up port 80 if it's in use"
+            docker ps -q --filter "publish=80" | xargs -r docker rm -f
+
+            # Гарантированно удаляем контейнер по имени, даже если он не запущен
+            echo "Ensure no existing 'school-web' container"
+            docker rm -f school-web 2>/dev/null || true
 
             echo "Stop & remove old container if exists"
             if [ "$(docker ps -q -f name=school-web)" ]; then
