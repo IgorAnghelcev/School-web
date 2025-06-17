@@ -16,21 +16,47 @@
 <body>
 <div id="site-header"></div>
 
-<main>
-    <h2>Контакты лицея</h2>
-    <p>Лицей им. С. Барановского</p>
-    <p>Молдова, АТО Гагаузия, г. Чадыр-Лунга, ул. Чапаева, 1</p>
-    <div class="map-container">
-        <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2710.6283644986447!2d28.676242115900388!3d46.2173339791214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cd94aa2ce8609f%3A0xa75d4e6373eaaefa!2z0YPQuy4g0JvQtdC70YzQutC-0LLQvtC00LAsINC80LDRgtC40LrQsNC70L7QvdCwINCh0YLQvtCz0L4g0LrQsNC90LjQvdC40LU!5e0!3m2!1sru!2smd!4v1684400000000!5m2!1sru!2smd"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Карта расположения лицея"
-        ></iframe>
-    </div>    <!-- Модалка для увеличенного просмотра картинок -->
+<main class="container py-5">
+    <h2 class="mb-4 text-center">Контакты лицея</h2>
 
+    <div class="row">
+        <!-- Социальные сети -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Мы в соцсетях</h5>
+                    <p class="card-text">
+                        <a href="https://www.instagram.com/baranovski_licei/" target="_blank"
+                           class="btn btn-outline-primary me-2 mb-2">
+                            <i class="bi bi-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100010471145187" target="_blank"
+                           class="btn btn-outline-primary mb-2">
+                            <i class="bi bi-facebook"></i> Facebook
+                        </a>
+                        <a href="https://t.me/putl_baranovski" target="_blank"
+                           class="btn btn-outline-primary mb-2">
+                            <i class="bi bi-facebook"></i> Telegram
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Встроенная карта -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body p-0">
+            <iframe
+                    class="w-100"
+                    style="min-height: 400px; border:0;"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2710.6283644986447!2d28.676242115900388!3d46.2173339791214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cd94aa2ce8609f%3A0xa75d4e6373eaaefa!2z0YPQuy4g0JvQtdC70YzQutC-0LLQvtC00LAsINC80LDRgtC40LrQsNC70L7QvdCwINCh0YLQvtCz0L4g0LrQsNC90LjQvdC40LU!5e0!3m2!1sru!2smd!4v1684400000000!5m2!1sru!2smd"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+    </div>
 </main>
 <footer>
     <p>&copy; 2025 Лицей им. С. Барановского</p>

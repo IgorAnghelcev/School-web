@@ -1,46 +1,33 @@
 var host = CONFIG.host;
 
 async function handleRegister(e) {
-    const form = document.querySelector('.form');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    e.preventDefault();              // отменяем дефолт
+    const form = e.target;           // <form id="form-register">
 
-        // Получаем значения полей
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
+    const name     = form.querySelector('#reg-name').value.trim();
+    const email    = form.querySelector('#reg-email').value.trim();
+    const password = form.querySelector('#reg-password').value;
 
-        // Подготовка тела запроса
-        const body = {name, email, password};
+    try {
+        const res = await fetch(`${host}/api/v1/user`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ name, email, password })
+        });
 
-        try {
-            const response = await fetch(`${host}/api/v1/user`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            });
-
-            if (!response.ok) {
-                // Если сервер вернул ошибку (например, 400)
-                const errorData = await response.json();
-                console.error('Ошибка сервера:', errorData);
-                alert(`Ошибка: ${errorData.message || response.statusText}`);
-                return;
-            }
-
-            const data = await response.json();
-            console.log('Успех:', data);
-            alert('Регистрация прошла успешно!');
-            // Можно очистить форму или перенаправить пользователя
-            form.reset();
-        } catch (err) {
-            console.error('Сетевая ошибка:', err);
-            alert('Не удалось связаться с сервером.');
+        if (!res.ok) {
+            const errData = await res.json();
+            throw new Error(errData.message || res.statusText);
         }
-    });
-};
+
+        await res.json();
+        alert('Регистрация прошла успешно!');
+        form.reset();
+    } catch (err) {
+        console.error('Ошибка при регистрации:', err);
+        alert(`Не удалось зарегистрироваться: ${err.message}`);
+    }
+}
 
 // helper: получить пользователя из localStorage
 function getUser() {
@@ -58,16 +45,20 @@ function clearUser() {
     localStorage.removeItem('user');
 }
 
-
 function renderAuthMenu() {
     const menu = document.getElementById('auth-menu');
+    if (!menu) return;  // ничего не делаем, если блока нет
+
+    // очищаем старые элементы
+    menu.innerHTML = '';
 
     const user = getUser();
     if (user) {
-        // Если залогинен — одна кнопка «Выход»
+        // кнопка выйти
         const li = document.createElement('li');
-        const btn = document.createElement('a');
-        btn.href = '#';
+        li.className = 'nav-item';
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-outline-light ms-2';
         btn.textContent = 'Выход';
         btn.addEventListener('click', e => {
             e.preventDefault();
@@ -76,25 +67,26 @@ function renderAuthMenu() {
         });
         li.appendChild(btn);
         menu.appendChild(li);
-        console.log('exit button created')
     } else {
-        // Иначе — «Регистрация» и «Вход»
-        ['Регистрация', 'Вход'].forEach(text => {
+        // регистрация
+        ['Регистрация','Вход'].forEach(text => {
             const li = document.createElement('li');
-            const btn = document.createElement('a');
-            btn.href = '#';
+            li.className = 'nav-item';
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-outline-light ms-2';
             btn.textContent = text;
             btn.addEventListener('click', e => {
                 e.preventDefault();
-                // показать нужную форму, скрыть другую
-                document.getElementById('register-container').style.display = (text === 'Регистрация' ? 'block' : 'none');
-                document.getElementById('login-container').style.display = (text === 'Вход' ? 'block' : 'none');
+                const showRegister = (text === 'Регистрация');
+                document.getElementById('register-container').style.display = showRegister ? 'block' : 'none';
+                document.getElementById('login-container').style.display = showRegister ? 'none' : 'block';
             });
             li.appendChild(btn);
             menu.appendChild(li);
         });
     }
 }
+
 
 async function handleLogin(e) {
     e.preventDefault();
@@ -578,6 +570,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(html => {
             document.getElementById('site-header').innerHTML = html;
+
+            if (document.getElementById('auth-menu')) {
+                renderAuthMenu();
+            }
         })
         .catch(err => console.error('Не удалось загрузить шапку:', err));
 
@@ -593,9 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     console.log('loaded');
-    if (document.getElementById('auth-menu')) {
-        renderAuthMenu();
-    }
+
 
 
     // Вешаем сабмит-хендлеры на формы
