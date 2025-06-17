@@ -1,0 +1,87 @@
+<link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/img/logo.png"
+/>
+<header>
+  <h1>Лицей им. С. Барановского</h1>
+  <p>"Знание – сила. Мудрость – путь."</p>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center">
+  <div class="container">
+    <!-- Кнопка-бургер для мобильных -->
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Переключить навигацию"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Содержимое навбара -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="about.html">О лицее</a>
+        </li>
+
+        <!-- Выпадающее меню «Учебный процесс» -->
+        <li class="nav-item dropdown">
+          <a
+                  class="nav-link dropdown-toggle"
+                  id="eduDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+          >
+            Учебный процесс
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="eduDropdown">
+            <li><a class="dropdown-item" href="education.html">Обучение</a></li>
+
+            <li><a class="dropdown-item" href="news.html">Новости</a></li>
+          </ul>
+        </li>
+
+        <!-- Выпадающее меню «Учителям» -->
+        <li class="nav-item dropdown">
+          <a
+                  class="nav-link dropdown-toggle"
+                  id="teachersDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+          >
+            Раздел для учителей
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="teachersDropdown">
+            <li><a class="dropdown-item" href="teachers.html">Учителя</a></li>
+            <li><a class="dropdown-item" href="documents.html">Нормативные документы</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="students.html">Ученикам</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="parents.html">Родителям</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Галерея</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacts.html">Контакты</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

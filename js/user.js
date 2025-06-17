@@ -61,7 +61,6 @@ function clearUser() {
 
 function renderAuthMenu() {
     const menu = document.getElementById('auth-menu');
-    menu.innerHTML = ''; // очистить
 
     const user = getUser();
     if (user) {
@@ -571,6 +570,16 @@ async function generateJwt(userId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    fetch('./header.html')
+        .then(res => {
+            if (!res.ok) throw new Error(res.status);
+            return res.text();
+        })
+        .then(html => {
+            document.getElementById('site-header').innerHTML = html;
+        })
+        .catch(err => console.error('Не удалось загрузить шапку:', err));
 
     const item = localStorage.getItem('user');
     if (!item) {

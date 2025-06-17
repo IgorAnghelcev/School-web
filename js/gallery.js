@@ -66,6 +66,16 @@ function closeImageModal() {
 
 // При загрузке страницы навешиваем инициализацию
 document.addEventListener('DOMContentLoaded', () => {
+    fetch('./header.html')
+        .then(res => {
+            if (!res.ok) throw new Error(res.status);
+            return res.text();
+        })
+        .then(html => {
+            document.getElementById('site-header').innerHTML = html;
+        })
+        .catch(err => console.error('Не удалось загрузить шапку:', err));
+
     // 1) Подгружаем первые фото
     loadPhotos();
 

@@ -38,35 +38,3 @@ jobs:
           docker push $IMAGE:latest
           docker push $IMAGE:$TAG
 
-      - name: Deploy to remote server
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            IMAGE=${{ secrets.DOCKER_USERNAME }}/school-web:latest
-
-            echo "Pull latest image"
-            docker pull $IMAGE
-
-            # Удаляем любой контейнер, слушающий 80 порт
-            echo "Free up port 80 if it's in use"
-            docker ps -q --filter "publish=80" | xargs -r docker rm -f
-
-            # Гарантированно удаляем контейнер по имени, даже если он не запущен
-            echo "Ensure no existing 'school-web' container"
-            docker rm -f school-web 2>/dev/null || true
-
-            echo "Stop & remove old container if exists"
-            if [ "$(docker ps -q -f name=school-web)" ]; then
-              docker stop school-web
-              docker rm school-web
-            fi
-
-            echo "Run new container"
-            docker run -d \
-              --restart=always \
-              --name school-web \
-              -p 80:80 \
-              $IMAGE
