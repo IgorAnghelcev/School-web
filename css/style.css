@@ -525,30 +525,6 @@ a:hover {
     transform: translateY(0);
 }
 
-.navbar {
-    /* Указываем путь к файлу (не забудьте добавить расширение,
-       и он отсчитывается от самого CSS-файла) */
-    background-image: url('../img/licei.jpg');
-    /* Растянуть на весь блок, сохранив пропорции */
-    background-size: cover;
-    /* Центрировать изображение */
-    background-position: center;
-    /* Не повторять картинку */
-    background-repeat: no-repeat;
-    /* Добавим минимальную высоту, чтобы картинка была видна */
-    min-height: 200px;
-    /* Если хотите тёмную полупрозрачную подложку для лучшей читаемости ссылок */
-    position: relative;
-}
-.navbar::before {
-    /*content: '';*/
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    /* чтобы псевдоэлемент оказался позади содержимого */
-    z-index: 1;
-}
-
 
 
 
@@ -637,30 +613,55 @@ a:hover {
 }
 
 
-
-/*фотография гагаузия в хедере*/
-header {
-    /* Вместо однотонного фона — картинка */
-    background-image: url('../img/gagauziya.png');
-    background-size: cover;       /* растянуть, сохранив пропорции */
-    background-position: top; /* центрировать */
-    background-repeat: no-repeat; /* не повторять */
-
-    /* Установим высоту, чтобы картинка была видна */
-    height: 250px;
-
-    /* Сохраняем отступы внутри, чтобы текст не прилипал */
-    padding: 20px;
-    /* Если хотите, чтобы сам блок не увеличивался контентом */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  /* по вертикали центрируем текст */
-    align-items: center;      /* по горизонтали центрируем текст */
-
-    /* Текст на тёмном фоне — делаем белым и с тенью */
-    color: #fff;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+.navbar {
+    /* Указываем путь к файлу (не забудьте добавить расширение,
+       и он отсчитывается от самого CSS-файла) */
+    /*background-image: url('../img/licei.jpg');*/
+    /* Растянуть на весь блок, сохранив пропорции */
+    background-size: cover;
+    /* Центрировать изображение */
+    background-position: center;
+    /* Не повторять картинку */
+    background-repeat: no-repeat;
+    /* Добавим минимальную высоту, чтобы картинка была видна */
+    min-height: 200px;
+    /* Если хотите тёмную полупрозрачную подложку для лучшей читаемости ссылок */
+    position: relative;
 }
+
+.navbar::before {
+    /*content: '';*/
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    /* чтобы псевдоэлемент оказался позади содержимого */
+    z-index: 1;
+}
+
+
+/*!*фотография гагаузия в хедере*!*/
+/*header {*/
+/*    !* Вместо однотонного фона — картинка *!*/
+/*    background-image: url('../img/gagauziya.png');*/
+/*    background-size: cover;       !* растянуть, сохранив пропорции *!*/
+/*    background-position: top; !* центрировать *!*/
+/*    background-repeat: no-repeat; !* не повторять *!*/
+
+/*    !* Установим высоту, чтобы картинка была видна *!*/
+/*    height: 250px;*/
+
+/*    !* Сохраняем отступы внутри, чтобы текст не прилипал *!*/
+/*    padding: 20px;*/
+/*    !* Если хотите, чтобы сам блок не увеличивался контентом *!*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;  !* по вертикали центрируем текст *!*/
+/*    align-items: center;      !* по горизонтали центрируем текст *!*/
+
+/*    !* Текст на тёмном фоне — делаем белым и с тенью *!*/
+/*    color: #fff;*/
+/*    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);*/
+/*}*/
 
 /* Если под заголовком параграф слишком мелкий */
 header p {
@@ -690,3 +691,62 @@ header p {
 <path stroke='rgba(0,0,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/>\
 </svg>");
 }
+
+.page-hero {
+    position: relative;
+    /* единый фон */
+    background: url('../img/licei.jpg') center/cover no-repeat;
+}
+
+/* тёмная полупрозрачная накладка, чтобы текст и ссылки было хорошо видно */
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* header и nav поверх накладки */
+.page-hero header,
+.page-hero .navbar {
+    position: relative;
+    z-index: 1;
+    background: transparent !important; /* убираем свой фон */
+}
+
+/* при желании можно прописать минимальную высоту героя, чтобы фон сразу был виден */
+.page-hero {
+    padding-bottom: 1rem; /* отступ снизу, чтобы nav не «липло» к hero */
+}
+
+/* при необходимости — добавьте отступ сверху или снизу для самого header */
+.page-hero header {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+
+/* общий стиль для всех «флаговых» изображений */
+.flag-img {
+    height: 60px;      /* можно скорректировать по вкусу */
+    width: auto;
+}
+
+/* если флаги должны чуть «подпрыгивать» при наведении */
+.flag-img:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+/* дополнительный отступ под флагами под шапкой */
+.flags-row {
+    background-color: #f8f9fa; /* или прозрачный, если фон страницы сквозной */
+}
+
+/* в welcome-структуре — убираем избыточный padding, если нужно */
+.welcome-section.d-flex {
+    gap: 1rem;
+}
+
