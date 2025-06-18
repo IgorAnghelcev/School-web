@@ -560,9 +560,7 @@ async function generateJwt(userId) {
         return false;
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-
+function loadHeader() {
     fetch('./header.html')
         .then(res => {
             if (!res.ok) throw new Error(res.status);
@@ -576,6 +574,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .catch(err => console.error('Не удалось загрузить шапку:', err));
+}
+document.addEventListener('DOMContentLoaded', () => {
+
+    fetch('./forms.html')
+        .then(res => {
+            if (!res.ok) throw new Error(res.status);
+            return res.text();
+        })
+        .then(html => {
+            document.getElementById('site-forms').innerHTML = html;
+            loadHeader();
+
+            // Вешаем сабмит-хендлеры на формы
+            let elementById = document.getElementById('form-register');
+            if (elementById) {
+                elementById.addEventListener('submit', handleRegister);
+            }
+            let elementById1 = document.getElementById('form-login');
+            if (elementById1) {
+                elementById1.addEventListener('submit', handleLogin);
+
+            }
+        })
+        .catch(err => console.error('Не удалось загрузить форму :', err));
+
+
+
+    loadHeader();
+
 
     const item = localStorage.getItem('user');
     if (!item) {
@@ -592,16 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Вешаем сабмит-хендлеры на формы
-    let elementById = document.getElementById('form-register');
-    if (elementById) {
-        elementById.addEventListener('submit', handleRegister);
-    }
-    let elementById1 = document.getElementById('form-login');
-    if (elementById1) {
-        elementById1.addEventListener('submit', handleLogin);
 
-    }
 
     window.addEventListener('scroll', () => {
         if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100 && feedContainer) {

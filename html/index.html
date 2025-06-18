@@ -20,39 +20,16 @@
 <div id="site-header"></div>
 
 <main class="main-flex">
-    <!-- Форма регистрации (по умолчанию скрыта) -->
-    <div class="glass-form-container" id="register-container" style="display: none;">
-        <h3>Регистрация</h3>
-        <form class="form" id="form-register">
-            <label for="reg-name">Имя:</label><br/>
-            <input id="reg-name" name="name" required type="text"/><br/>
-            <label for="reg-email">Email:</label><br/>
-            <input id="reg-email" name="email" required type="email"/><br/>
-            <label for="reg-password">Пароль:</label><br/>
-            <input id="reg-password" name="password" required type="password"/><br/>
-            <button type="submit">Зарегистрироваться</button>
-        </form>
-    </div>
 
-    <!-- Форма входа (по умолчанию скрыта) -->
-    <div class="glass-form-container" id="login-container" style="display: none;">
-        <h3>Вход</h3>
-        <form class="form" id="form-login">
-            <label for="login-email">Email:</label><br/>
-            <input id="login-email" name="email" required type="email"/><br/>
-            <label for="login-password">Пароль:</label><br/>
-            <input id="login-password" name="password" required type="password"/><br/>
-            <button type="submit">Войти</button>
-        </form>
-    </div>
+    <div id="site-forms"></div>
 
-    <div class="welcome-section">
-        <h2>Добро пожаловать на сайт лицея!</h2>
-        <p>Мы рады приветствовать вас!</p>
-    </div>
 
-    <div class="welcome-section">
-        <h3>Последние новости лицея</h3>
+    <div class="welcome-section" style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
+        <h2 class="display-5 fw-bold">Добро пожаловать в Лицей им. С. Барановского!</h2>
+        <p class="lead mb-4">
+            Мы — сообщество, где каждый учащийся раскрывает свой потенциал,
+            а преподаватели вдохновляют на критическое мышление, творчество и лидерство.
+        </p>
     </div>
     <section id="feed" data-feed-type="NEWS"></section>
 
